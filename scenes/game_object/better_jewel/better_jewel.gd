@@ -6,6 +6,7 @@ signal better_jewel_spawned
 @onready var money_manager = get_tree().get_first_node_in_group("money_manager") as MoneyManager
 @onready var jewel_collected_particle = %JewelCollectedParticle
 
+
 func _ready():
 	better_jewel_spawned.emit()
 
@@ -13,7 +14,7 @@ func _ready():
 func _on_better_jewel_collected_sfx_finished() -> void:
 	queue_free()
 
-
+# TODO: Essentially the same function as regular Jewel spawning. Refactor pls
 func _on_area_2d_2_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:

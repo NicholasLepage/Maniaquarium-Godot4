@@ -12,6 +12,7 @@ func _ready():
 	Events.mouse_fish_bought.connect(_on_mouse_fish_bought)
 	Events.win_egg_bought.connect(_on_win_egg_bought)
 	
+	# NG+
 	if Events.new_game_plus:
 		starting_money = 99990
 		

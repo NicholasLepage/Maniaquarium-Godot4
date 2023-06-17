@@ -5,7 +5,7 @@ extends Node
 
 var velocity = Vector2.ZERO
 
-
+# Reusable velocity component that should work between projects
 func accelerate_to_player():
 	var owner_node2d = owner as Node2D
 	if owner_node2d == null:

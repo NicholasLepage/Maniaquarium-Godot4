@@ -1,18 +1,19 @@
 extends Area2D
 
+
 @export var basic_pellet: PackedScene
+@export var max_pellets: int = 6
 
 @onready var feeding_timer = %FeedingTimer
 @onready var pellet_drop_sfx = $PelletDropSFX
 @onready var debug_label = $DebugLabel
 @onready var feeding_cd_bar = %FeedingCDBar
 
-
-@export var max_pellets: int = 6
-var pellets_on_screen: int = 0
-
 var at_pellet_capacity: bool = false
 var can_feed: bool = true
+
+var pellets_on_screen: int = 0
+
 var foreground
 
 func _ready():
@@ -28,7 +29,7 @@ func _process(_delta):
 	feeding_cd_bar.value = feeding_timer.time_left
 	debug_label.text = str(pellets_on_screen)
 
-
+# Spawns the pellets
 func drop_pellet()->void:
 	if can_feed == true and !at_pellet_capacity:
 		can_feed = false
@@ -56,10 +57,11 @@ func _on_pellet_despawned():
 	pellets_on_screen -= 1
 	check_pellet_capacity()
 
+# Feeding cooldown mechanic
 func _on_feeding_timer_timeout()->void:
 	can_feed = true
-	
 
+# Makes sure the player doesn't accidentally spawn a pellet while collecting money.
 func _on_input_event(_viewport, event, _shape_idx)->void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:

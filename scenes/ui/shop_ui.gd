@@ -26,15 +26,16 @@ extends CanvasLayer
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var center_container_win: CenterContainer = %CenterContainerWin
 
-
+# Shop Prices
 var basic_fish_cost: int = 20
 var mouse_fish_cost: int = 100
-var win_egg_cost: int = 20
+var win_egg_cost: int = 250
 
 var mouse_fish_in_play: bool = false
 
 
 func _ready():
+	# Shop setup
 	money_manager.zeni_changed.connect(_on_zeni_changed)
 	buy_fish_button.pressed.connect(_on_buy_fish_button_pressed)
 	Events.mouse_fish_died.connect(_on_mouse_fish_died)
@@ -47,11 +48,11 @@ func _ready():
 	update_mouse_fish_max_amount_label()
 	check_disabled()
 
-
+# Run this everytime the player's Zeni count changes.
 func update_zeni_label():
 	zeni_total_label.text = "Ƶeni: " + str(money_manager.zeni_total)
 
-
+# Manages the 'Enabled' state of the Buttons.
 func check_disabled():
 	if money_manager.zeni_total < basic_fish_cost:
 		buy_fish_button.disabled = true
@@ -74,11 +75,13 @@ func check_disabled():
 		buy_win_button.disabled = false
 
 
-
+# Handles mouse fish button due to its max amount.
 func update_mouse_fish_max_amount_label():
+	# NG+: Unlimited mouse fishies
 	if Events.win_counter >= 1:
 		max_amount_label.text = "?/Infinity"
 		return
+
 	if mouse_fish_in_play:
 		max_amount_label.text = "1/1"
 	else:
@@ -118,18 +121,20 @@ func _on_buy_win_button_pressed() -> void:
 	jewel_collected_particle.emitting = true
 	animation_player.play("win_egg_bought_animation")
 	update_zeni_label()
+	
+	# NG+
 	if Events.win_counter == 2:
 		win_text.text = "Ayo what you doin', you already got the trophy"
 	elif Events.win_counter > 2:
 		var format_string = "Ayo what you doin', you already got %s trophies"
 		win_text.text = format_string % str(Events.win_counter - 1)
 
-
+# TODO: Remove this
 func end_it_all():
 	center_container_win.visible = true
 	Events.new_game_plus = true
 
-
+# TODO: Old end screen, remove this too
 func play_troll():
 	win_sike_sfx.play(0.2)
 	await get_tree().create_timer(0.2).timeout

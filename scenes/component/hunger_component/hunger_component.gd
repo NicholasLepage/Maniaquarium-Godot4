@@ -2,16 +2,14 @@ extends Node
 
 signal hunger_changed(hunger_level: int)
 
-@onready var hunger_timer = $HungerTimer
-
 # Need to assign on parent, in the Editor
 @export var mouth_area_2d: Area2D 
 @export var hunger_timer_time: int = 3
-
 @export var max_hunger_level: int = 5
+
+@onready var hunger_timer = $HungerTimer
 var hunger_level: int = 1
 var sprite
-
 
 
 func _ready():
@@ -35,7 +33,6 @@ func check_hunger_tween():
 	elif hunger_level < max_hunger_level - 2:
 		var tween = create_tween()
 		tween.tween_property(sprite, "modulate", Color(1,1,1), 0.3)
-	
 
 
 func _on_hunger_timer_timeout():
@@ -55,3 +52,8 @@ func _on_fish_ate():
 	reset_hunger_to_one(hunger_timer_time)
 	check_hunger_tween()
 	hunger_changed.emit(hunger_level)
+
+
+# Notes: Not a fan of how I programmed this.
+# Although it is re-usable and scaleable to other types of fishies, it's prone 
+# to timing bugs mostly due to the "check_hunger_tween()" method. 
