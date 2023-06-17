@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://b3n7f8ted2r22"]
+
+[ext_resource type="Script" path="res://scenes/game_object/jewel/jewel.gd" id="1_gmf4s"]
+[ext_resource type="Texture2D" uid="uid://veilc5bxjg5t" path="res://assets/images/stylized_gem.png" id="2_k5juo"]
+[ext_resource type="AudioStream" uid="uid://dmtay70qoq7si" path="res://assets/sfx/Retro - Chip Power.wav" id="3_dw48s"]
+[ext_resource type="PackedScene" uid="uid://cysqbds3xk121" path="res://scenes/particles/jewel_collected_particle.tscn" id="4_fmded"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bv3xy"]
+radius = 18.0
+
+[node name="Jewel" type="RigidBody2D"]
+collision_layer = 16
+collision_mask = 0
+linear_damp = 11.0
+script = ExtResource("1_gmf4s")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.242593, 0.242593)
+texture = ExtResource("2_k5juo")
+
+[node name="Area2D" type="Area2D" parent="." groups=["zeni"]]
+scale = Vector2(1.49334, 1.49334)
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_bv3xy")
+
+[node name="JewelCollectedSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_dw48s")
+volume_db = -16.0
+
+[node name="JewelCollectedParticle" parent="." instance=ExtResource("4_fmded")]
+unique_name_in_owner = true
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="finished" from="JewelCollectedSFX" to="." method="_on_jewel_collected_sfx_finished"]

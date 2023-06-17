@@ -1,0 +1,44 @@
+[gd_scene load_steps=10 format=3 uid="uid://snhf2jofejci"]
+
+[ext_resource type="Texture2D" uid="uid://ct0r5on0vv460" path="res://assets/images/mousefish.png" id="1_32hm6"]
+[ext_resource type="Script" path="res://scenes/game_object/mouse_fish/mouse_fish.gd" id="1_oernd"]
+[ext_resource type="PackedScene" uid="uid://gahjnxgdmtkk" path="res://scenes/component/hunger_component/hunger_component.tscn" id="2_nrpvr"]
+[ext_resource type="PackedScene" uid="uid://bh00qe8556ulm" path="res://scenes/component/money_drop_component/money_drop_component.tscn" id="3_wqo0t"]
+[ext_resource type="PackedScene" uid="uid://btbk2s0s3n82l" path="res://scenes/game_object/better_jewel/better_jewel.tscn" id="4_5g35h"]
+[ext_resource type="PackedScene" uid="uid://bea44qy1ikpqi" path="res://scenes/component/velocity_component/velocity_component.tscn" id="4_ji8ki"]
+[ext_resource type="PackedScene" uid="uid://ch2barirtvvpc" path="res://scenes/component/mouth_area_2d/mouth_area_2d.tscn" id="6_a0x21"]
+[ext_resource type="PackedScene" uid="uid://dfnbpyp16wbc3" path="res://scenes/util/debug_label.tscn" id="7_gxjth"]
+[ext_resource type="AudioStream" uid="uid://f5h6ww5jguh0" path="res://assets/sfx/Short - Ploppy Plop.wav" id="8_p4tal"]
+
+[node name="MouseFish" type="CharacterBody2D" groups=["mouse_fish"]]
+script = ExtResource("1_oernd")
+
+[node name="HungerComponent" parent="." node_paths=PackedStringArray("mouth_area_2d") instance=ExtResource("2_nrpvr")]
+mouth_area_2d = NodePath("../Visuals/Sprite2D/MouthArea2D")
+max_hunger_level = 6
+
+[node name="MoneyDropComponent" parent="." instance=ExtResource("3_wqo0t")]
+jewel_scene = ExtResource("4_5g35h")
+timer_value = 2
+
+[node name="VelocityComponent" parent="." instance=ExtResource("4_ji8ki")]
+
+[node name="Visuals" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Visuals"]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_32hm6")
+flip_h = true
+
+[node name="MouthArea2D" parent="Visuals/Sprite2D" groups=["mouse_mouth"] instance=ExtResource("6_a0x21")]
+unique_name_in_owner = true
+position = Vector2(176, 8)
+scale = Vector2(4, 4)
+collision_layer = 33
+
+[node name="DebugLabel" parent="." instance=ExtResource("7_gxjth")]
+visible = false
+
+[node name="PelletEatenSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_p4tal")
+volume_db = -12.0

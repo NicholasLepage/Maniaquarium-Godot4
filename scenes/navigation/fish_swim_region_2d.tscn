@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cpdpm2duhrmfh"]
+
+[ext_resource type="Script" path="res://scenes/navigation/fish_swim_region_2d.gd" id="1_7jf2b"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_6gtof"]
+vertices = PackedVector2Array(1259, 136, 1254, 680, 40, 679, 38, 136)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(38, 136, 40, 679, 1254, 680, 1259, 136)])
+
+[node name="FishSwimRegion2D" type="NavigationRegion2D"]
+navigation_polygon = SubResource("NavigationPolygon_6gtof")
+travel_cost = 0.0
+script = ExtResource("1_7jf2b")

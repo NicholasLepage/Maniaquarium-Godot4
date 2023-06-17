@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqnc05cp0cmxi"]
+
+[ext_resource type="AudioStream" uid="uid://dgrejmc7iw875" path="res://assets/music/relaxing-music-vol1-124477.mp3" id="1_nyf1y"]
+[ext_resource type="Script" path="res://scenes/autoload/music_player.gd" id="2_art3j"]
+
+[node name="MusicPlayer" type="AudioStreamPlayer"]
+stream = ExtResource("1_nyf1y")
+volume_db = -16.0
+script = ExtResource("2_art3j")

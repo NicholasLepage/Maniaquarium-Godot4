@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bh00qe8556ulm"]
+
+[ext_resource type="Script" path="res://scenes/component/money_drop_component/money_drop_component.gd" id="1_hud3x"]
+[ext_resource type="PackedScene" uid="uid://b3n7f8ted2r22" path="res://scenes/game_object/jewel/jewel.tscn" id="2_0smrx"]
+
+[node name="MoneyDropComponent" type="Node"]
+script = ExtResource("1_hud3x")
+jewel_scene = ExtResource("2_0smrx")
+
+[node name="MoneyDropTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="MoneyDropTimer" to="." method="_on_money_drop_timer_timeout"]

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://ck1ywm1aa72w1"]
+
+[ext_resource type="Texture2D" uid="uid://bgwi2bcxltw7g" path="res://assets/images/trophy.png" id="1_phpgd"]
+
+[node name="MenuTrophy2D" type="Sprite2D"]
+position = Vector2(40, 54)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("1_phpgd")

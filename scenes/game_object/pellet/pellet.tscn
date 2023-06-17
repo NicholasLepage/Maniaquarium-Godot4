@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://bl763531adggx"]
+
+[ext_resource type="Texture2D" uid="uid://cs4r4kxakbbra" path="res://assets/images/pellet.png" id="1_nr2o5"]
+[ext_resource type="Script" path="res://scenes/game_object/pellet/pellet.gd" id="1_wybep"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5k2oe"]
+radius = 4.36214
+height = 12.1302
+
+[node name="Pellet" type="RigidBody2D"]
+collision_layer = 2
+collision_mask = 0
+linear_damp = 8.0
+script = ExtResource("1_wybep")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.347, 0.347)
+texture = ExtResource("1_nr2o5")
+
+[node name="EatMeArea2D" type="Area2D" parent="." groups=["pellet"]]
+scale = Vector2(1.75, 1.75)
+collision_layer = 2
+collision_mask = 0
+
+[node name="EatMeCollisionShape2D" type="CollisionShape2D" parent="EatMeArea2D"]
+rotation = 1.3294
+shape = SubResource("CapsuleShape2D_5k2oe")

@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dcrob7wvs3uqj"]
+
+[ext_resource type="Script" path="res://scenes/game_object/fish_turner_area_2d/fish_turner_area_2d.gd" id="1_2bxag"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kw45b"]
+size = Vector2(6.21606, 157.137)
+
+[node name="FishTurnerArea2D" type="Area2D" groups=["fish_turner"]]
+collision_layer = 0
+collision_mask = 33
+script = ExtResource("1_2bxag")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1296, 365)
+scale = Vector2(4.757, 4.757)
+shape = SubResource("RectangleShape2D_kw45b")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

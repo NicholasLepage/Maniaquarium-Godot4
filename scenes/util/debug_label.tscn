@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dfnbpyp16wbc3"]
+
+[ext_resource type="Theme" uid="uid://bstmv845o7ivo" path="res://resources/theme/new_theme.tres" id="1_ym3yt"]
+[ext_resource type="Script" path="res://scenes/util/debug_label.gd" id="2_ei0ia"]
+
+[node name="DebugLabel" type="Label"]
+offset_top = -74.0
+offset_right = 40.0
+offset_bottom = -26.0
+theme = ExtResource("1_ym3yt")
+theme_override_font_sizes/font_size = 32
+text = "1"
+script = ExtResource("2_ei0ia")

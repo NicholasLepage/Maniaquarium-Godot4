@@ -1,0 +1,67 @@
+[gd_scene load_steps=13 format=3 uid="uid://ctitm2rh0lsx3"]
+
+[ext_resource type="PackedScene" uid="uid://neqca37jkuax" path="res://scenes/game_object/basic_fish/basic_fish.tscn" id="1_3j7ov"]
+[ext_resource type="Texture2D" uid="uid://c4w37i1dyxjf5" path="res://assets/images/OceanBackground.png" id="1_5uapm"]
+[ext_resource type="PackedScene" uid="uid://bkslda0gnfoc1" path="res://scenes/manager/money_manager/money_manager.tscn" id="1_a0wbo"]
+[ext_resource type="Script" path="res://scenes/main/main.gd" id="1_ev31b"]
+[ext_resource type="PackedScene" uid="uid://b0s0ai8pour0w" path="res://scenes/component/fish_spawner/fish_spawner.tscn" id="4_0ysr7"]
+[ext_resource type="PackedScene" uid="uid://ct5132way2exx" path="res://scenes/ui/shop_ui.tscn" id="4_mf0c6"]
+[ext_resource type="PackedScene" uid="uid://cj0kww8um2w32" path="res://scenes/component/feeder_mechanic/feeder_mechanic.tscn" id="5_ft47c"]
+[ext_resource type="PackedScene" uid="uid://cpabrkbkh4gnj" path="res://scenes/game_object/despawn_zone/despawn_zone.tscn" id="7_7hwcm"]
+[ext_resource type="PackedScene" uid="uid://dcrob7wvs3uqj" path="res://scenes/game_object/fish_turner_area_2d/fish_turner_area_2d.tscn" id="10_8bpa7"]
+
+[sub_resource type="Gradient" id="Gradient_lckbi"]
+offsets = PackedFloat32Array(0, 0.490323, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.482993, 0.482993, 0.482993, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_u86fu"]
+gradient = SubResource("Gradient_lckbi")
+
+[sub_resource type="Environment" id="Environment_52qgd"]
+background_mode = 3
+glow_enabled = true
+adjustment_enabled = true
+adjustment_brightness = 1.1
+adjustment_saturation = 0.95
+adjustment_color_correction = SubResource("GradientTexture2D_u86fu")
+
+[node name="Main" type="Node"]
+script = ExtResource("1_ev31b")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_52qgd")
+
+[node name="ShopUI" parent="." node_paths=PackedStringArray("money_manager") instance=ExtResource("4_mf0c6")]
+money_manager = NodePath("../MoneyManager")
+
+[node name="MoneyManager" parent="." instance=ExtResource("1_a0wbo")]
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(649, 363)
+scale = Vector2(0.689729, 0.689729)
+texture = ExtResource("1_5uapm")
+
+[node name="FishSpawner" parent="." node_paths=PackedStringArray("foreground") instance=ExtResource("4_0ysr7")]
+position = Vector2(33, 614)
+foreground = NodePath("../Foreground")
+
+[node name="FeederMechanic" parent="." instance=ExtResource("5_ft47c")]
+
+[node name="Foreground" type="Node2D" parent="." groups=["foreground"]]
+
+[node name="Basic Fish" parent="Foreground" instance=ExtResource("1_3j7ov")]
+position = Vector2(371, 257)
+
+[node name="Basic Fish2" parent="Foreground" instance=ExtResource("1_3j7ov")]
+position = Vector2(1184, 427)
+
+[node name="DespawnZone" parent="." instance=ExtResource("7_7hwcm")]
+position = Vector2(595, 746)
+
+[node name="FishTurnerArea2D" parent="." instance=ExtResource("10_8bpa7")]
+
+[node name="FishTurnerArea2D2" parent="." instance=ExtResource("10_8bpa7")]
+position = Vector2(-1311, 3)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.731812, 0.927795, 1, 1)

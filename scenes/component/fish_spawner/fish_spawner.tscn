@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://b0s0ai8pour0w"]
+
+[ext_resource type="Script" path="res://scenes/component/fish_spawner/fish_spawner.gd" id="1_7ychw"]
+[ext_resource type="PackedScene" uid="uid://neqca37jkuax" path="res://scenes/game_object/basic_fish/basic_fish.tscn" id="2_ed3nw"]
+[ext_resource type="PackedScene" uid="uid://snhf2jofejci" path="res://scenes/game_object/mouse_fish/mouse_fish.tscn" id="3_3yn0i"]
+
+[node name="FishSpawner" type="Node2D"]
+position = Vector2(41, 615)
+script = ExtResource("1_7ychw")
+basic_fish = ExtResource("2_ed3nw")
+mouse_fish = ExtResource("3_3yn0i")

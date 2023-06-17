@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://cj0kww8um2w32"]
+
+[ext_resource type="Script" path="res://scenes/component/feeder_mechanic/feeder_mechanic.gd" id="1_gahob"]
+[ext_resource type="PackedScene" uid="uid://bl763531adggx" path="res://scenes/game_object/pellet/pellet.tscn" id="2_mbe0i"]
+[ext_resource type="AudioStream" uid="uid://vxiogr4wa3ei" path="res://assets/sfx/Short - Swish.wav" id="3_t0nm8"]
+[ext_resource type="PackedScene" uid="uid://dfnbpyp16wbc3" path="res://scenes/util/debug_label.tscn" id="4_kmxb2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vpug7"]
+radius = 6.08276
+
+[node name="FeederMechanic" type="Area2D"]
+collision_layer = 8
+collision_mask = 16
+script = ExtResource("1_gahob")
+basic_pellet = ExtResource("2_mbe0i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_vpug7")
+
+[node name="FeedingTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.2
+one_shot = true
+
+[node name="FeedingCDBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(100, 10)
+offset_left = -52.0
+offset_top = -33.0
+offset_right = 48.0
+offset_bottom = -6.0
+max_value = 0.5
+value = 0.2
+
+[node name="PelletDropSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_t0nm8")
+volume_db = -12.0
+
+[node name="DebugLabel" parent="." instance=ExtResource("4_kmxb2")]
+visible = false
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="timeout" from="FeedingTimer" to="." method="_on_feeding_timer_timeout"]

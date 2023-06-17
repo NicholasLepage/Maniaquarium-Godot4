@@ -1,0 +1,397 @@
+[gd_scene load_steps=16 format=3 uid="uid://ct5132way2exx"]
+
+[ext_resource type="Texture2D" uid="uid://c200q1mut8tt7" path="res://assets/images/wooden_texture.jpg" id="1_66foy"]
+[ext_resource type="Theme" uid="uid://bstmv845o7ivo" path="res://resources/theme/new_theme.tres" id="1_tegqw"]
+[ext_resource type="Script" path="res://scenes/ui/shop_ui.gd" id="1_v82t1"]
+[ext_resource type="AudioStream" uid="uid://cx4thq84p45l6" path="res://assets/sfx/Swish - Pocket Waves.wav" id="2_liobc"]
+[ext_resource type="AudioStream" uid="uid://dj1pf0hlhml1j" path="res://assets/sfx/Texture - Is There Anybody Out There.wav" id="3_7hc3j"]
+[ext_resource type="Texture2D" uid="uid://cq4rr44qqwpfw" path="res://assets/images/buyfish.jpg" id="3_fgee6"]
+[ext_resource type="AudioStream" uid="uid://cvq7tp2iu5as6" path="res://assets/sfx/52322__stephsinger22__cheering.wav" id="4_1qr8c"]
+[ext_resource type="Texture2D" uid="uid://bt86yhxi5pf1k" path="res://assets/images/computermouse-removebg-preview.png" id="5_mgqn7"]
+[ext_resource type="Texture2D" uid="uid://b1e3g6s3uvsgb" path="res://assets/images/win_egg-removebg-preview.png" id="6_uffsq"]
+[ext_resource type="PackedScene" uid="uid://cysqbds3xk121" path="res://scenes/particles/jewel_collected_particle.tscn" id="7_rp5n7"]
+[ext_resource type="Texture2D" uid="uid://d3kcexan48whe" path="res://assets/images/kisspng-middle-finger-flip-the-bird-the-finger-sticker-rin-5aec062f479764.9746841815254175192933.png" id="8_70io6"]
+[ext_resource type="Texture2D" uid="uid://bgwi2bcxltw7g" path="res://assets/images/trophy.png" id="12_lxcqn"]
+
+[sub_resource type="Animation" id="Animation_d0jxw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/HBoxContainer/MarginContainer3/BuyWinButton/WinEggSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(45, 55)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarginContainer/HBoxContainer/MarginContainer3/BuyWinButton/WinEggSprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.156, 0.156)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MarginContainer/HBoxContainer/MarginContainer3/BuyWinButton/WinEggSprite:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MarginContainer/HBoxContainer/MarginContainer3/BuyWinButton/WinEggSprite:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MarginContainer/HBoxContainer/MarginContainer3/BuyWinButton/MidFinga2D:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("MarginContainer/HBoxContainer/MarginContainer3/BuyWinButton/MidFinga2D:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.181014, 0.181014)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("MarginContainer/HBoxContainer/MarginContainer3/BuyWinButton/Trophy2D:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_fjjgh"]
+resource_name = "win_egg_bought_animation"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/HBoxContainer/MarginContainer3/BuyWinButton/WinEggSprite:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(45, 55), Vector2(-504, 355)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarginContainer/HBoxContainer/MarginContainer3/BuyWinButton/WinEggSprite:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.156, 0.156), Vector2(0.677, 0.677)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MarginContainer/HBoxContainer/MarginContainer3/BuyWinButton/WinEggSprite:rotation")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.8, 1.9, 2, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.174533, -0.174533, 0.174533, -0.174533, 0.174533, -0.174533, 0.174533, -0.174533, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MarginContainer/HBoxContainer/MarginContainer3/BuyWinButton/WinEggSprite:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(2.7, 3.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MarginContainer/HBoxContainer/MarginContainer3/BuyWinButton/Trophy2D:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(2.7, 3.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("MarginContainer/HBoxContainer/MarginContainer3/BuyWinButton/Trophy2D:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(2.7, 3.4),
+"transitions": PackedFloat32Array(0.435275, 1),
+"update": 0,
+"values": [Vector2(0.181014, 0.181014), Vector2(0.75, 0.75)]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(2.6, 3.6),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"play_troll"
+}, {
+"args": [],
+"method": &"end_it_all"
+}]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("MarginContainer/HBoxContainer/MarginContainer3/BuyWinButton/Trophy2D:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(2.7),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-485, 364)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sh0r5"]
+_data = {
+"RESET": SubResource("Animation_d0jxw"),
+"win_egg_bought_animation": SubResource("Animation_fjjgh")
+}
+
+[node name="ShopUI" type="CanvasLayer"]
+script = ExtResource("1_v82t1")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_sh0r5")
+}
+
+[node name="BuyFishSFX" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("2_liobc")
+volume_db = -16.0
+
+[node name="WinIntroSFX" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("3_7hc3j")
+volume_db = -12.0
+
+[node name="WinSikeSFX" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("4_1qr8c")
+volume_db = -6.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.184314, 0.729412, 1, 0.592157)
+position = Vector2(648, -560)
+rotation = 3.14159
+scale = Vector2(1.29304, 1.29304)
+texture = ExtResource("1_66foy")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+size_flags_vertical = 0
+theme_override_constants/margin_left = 30
+
+[node name="ZeniTotalLabel" type="Label" parent="MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("1_tegqw")
+theme_override_font_sizes/font_size = 54
+text = "Ƶeni: 20"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 300
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 300
+
+[node name="BuyFishButton" type="Button" parent="MarginContainer/HBoxContainer/MarginContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_colors/icon_disabled_color = Color(1, 0, 0, 1)
+icon = ExtResource("3_fgee6")
+expand_icon = true
+
+[node name="BuyFishCostLabel" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer/BuyFishButton"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 4.0
+offset_top = -7.0
+offset_right = 44.0
+offset_bottom = 41.0
+theme = ExtResource("1_tegqw")
+theme_override_font_sizes/font_size = 32
+text = "20"
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="BuyMouseFishButton" type="Button" parent="MarginContainer/HBoxContainer/MarginContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_colors/icon_disabled_color = Color(1, 0, 0, 1)
+icon = ExtResource("5_mgqn7")
+expand_icon = true
+
+[node name="MaxAmountLabel" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer2/BuyMouseFishButton"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 58.0
+offset_top = 77.0
+offset_right = 98.0
+offset_bottom = 103.0
+theme = ExtResource("1_tegqw")
+text = "1/1"
+horizontal_alignment = 2
+
+[node name="BuyMouseFishCostLabel" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer2/BuyMouseFishButton"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 1.0
+offset_top = -9.0
+offset_right = 41.0
+offset_bottom = 39.0
+theme = ExtResource("1_tegqw")
+theme_override_font_sizes/font_size = 32
+text = "20"
+
+[node name="BuyFishSFX" type="AudioStreamPlayer" parent="MarginContainer/HBoxContainer/MarginContainer2/BuyMouseFishButton"]
+
+[node name="MarginContainer3" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="BuyWinButton" type="Button" parent="MarginContainer/HBoxContainer/MarginContainer3"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+disabled = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="WinEggSprite" type="Sprite2D" parent="MarginContainer/HBoxContainer/MarginContainer3/BuyWinButton"]
+unique_name_in_owner = true
+position = Vector2(45, 55)
+scale = Vector2(0.156, 0.156)
+texture = ExtResource("6_uffsq")
+
+[node name="BuyWinEggLabel" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer3/BuyWinButton"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 1.0
+offset_top = -8.0
+offset_right = 55.0
+offset_bottom = 40.0
+theme = ExtResource("1_tegqw")
+theme_override_font_sizes/font_size = 32
+text = "300"
+
+[node name="JewelCollectedParticle" parent="MarginContainer/HBoxContainer/MarginContainer3/BuyWinButton" instance=ExtResource("7_rp5n7")]
+unique_name_in_owner = true
+position = Vector2(51, 47)
+
+[node name="MidFinga2D" type="Sprite2D" parent="MarginContainer/HBoxContainer/MarginContainer3/BuyWinButton"]
+unique_name_in_owner = true
+visible = false
+modulate = Color(1, 1, 1, 0)
+position = Vector2(-482, 349)
+scale = Vector2(0.181014, 0.181014)
+texture = ExtResource("8_70io6")
+
+[node name="Trophy2D" type="Sprite2D" parent="MarginContainer/HBoxContainer/MarginContainer3/BuyWinButton"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
+scale = Vector2(0.181014, 0.181014)
+texture = ExtResource("12_lxcqn")
+
+[node name="CenterContainerWin" type="CenterContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -346.0
+offset_top = -169.0
+offset_right = 347.0
+offset_bottom = -64.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainerWin"]
+layout_mode = 2
+
+[node name="WinText" type="Label" parent="CenterContainerWin/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("1_tegqw")
+theme_override_font_sizes/font_size = 48
+text = "You can now play New Game+"
+
+[node name="MainMenuButton" type="Button" parent="CenterContainerWin/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Return to Main Menu"
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/MarginContainer2/BuyMouseFishButton" to="." method="_on_buy_mouse_fish_button_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/MarginContainer3/BuyWinButton" to="." method="_on_buy_win_button_pressed"]
+[connection signal="pressed" from="CenterContainerWin/VBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]

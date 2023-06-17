@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://btbk2s0s3n82l"]
+
+[ext_resource type="Script" path="res://scenes/game_object/better_jewel/better_jewel.gd" id="1_hbwt5"]
+[ext_resource type="AudioStream" uid="uid://dmtay70qoq7si" path="res://assets/sfx/Retro - Chip Power.wav" id="2_16oqv"]
+[ext_resource type="Texture2D" uid="uid://tq7vt0qwvlmi" path="res://assets/images/moneybag.png" id="2_cbyrn"]
+[ext_resource type="PackedScene" uid="uid://cysqbds3xk121" path="res://scenes/particles/jewel_collected_particle.tscn" id="3_g75s4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8m104"]
+radius = 30.0167
+
+[node name="BetterJewel" type="RigidBody2D"]
+linear_damp = 6.0
+script = ExtResource("1_hbwt5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -2.952)
+scale = Vector2(0.126, 0.126)
+texture = ExtResource("2_cbyrn")
+
+[node name="Area2D2" type="Area2D" parent="." groups=["zeni"]]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+shape = SubResource("CircleShape2D_8m104")
+
+[node name="JewelCollectedParticle" parent="." instance=ExtResource("3_g75s4")]
+unique_name_in_owner = true
+
+[node name="BetterJewelCollectedSFX" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("2_16oqv")
+volume_db = -16.0
+
+[connection signal="input_event" from="Area2D2" to="." method="_on_area_2d_2_input_event"]
+[connection signal="finished" from="BetterJewelCollectedSFX" to="." method="_on_better_jewel_collected_sfx_finished"]

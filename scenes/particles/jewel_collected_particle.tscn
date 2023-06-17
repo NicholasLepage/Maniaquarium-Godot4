@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://cysqbds3xk121"]
+
+[ext_resource type="Texture2D" uid="uid://dli4g3y2nvund" path="res://assets/images/particles/symbol_02.png" id="1_odehj"]
+
+[sub_resource type="Curve" id="Curve_gwjs5"]
+_data = [Vector2(0.009375, 0.745454), 0.0, 0.0, 0, 0, Vector2(0.98125, 0.272727), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_p15nu"]
+curve = SubResource("Curve_gwjs5")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vhdik"]
+particle_flag_disable_z = true
+direction = Vector3(1, 1, 0)
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 80.0
+initial_velocity_max = 120.0
+angular_velocity_min = -180.0
+angular_velocity_max = 180.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 0.1
+scale_max = 0.2
+scale_curve = SubResource("CurveTexture_p15nu")
+color = Color(1, 0.941176, 0, 1)
+
+[sub_resource type="Environment" id="Environment_x85nd"]
+background_mode = 3
+glow_enabled = true
+glow_intensity = 8.0
+glow_strength = 1.12
+
+[node name="JewelCollectedParticle" type="GPUParticles2D"]
+self_modulate = Color(3, 3, 3, 1)
+emitting = false
+amount = 16
+process_material = SubResource("ParticleProcessMaterial_vhdik")
+texture = ExtResource("1_odehj")
+lifetime = 0.4
+one_shot = true
+explosiveness = 0.9
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_x85nd")
