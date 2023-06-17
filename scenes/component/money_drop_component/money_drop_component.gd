@@ -13,7 +13,7 @@ func _ready():
 func set_drop_timer_value(new_timer_value):
 	money_drop_timer.start(new_timer_value)
 
-
+# Money spawns here
 func _on_money_drop_timer_timeout():
 	var jewel = jewel_scene.instantiate() as RigidBody2D
 	var foreground = get_tree().get_first_node_in_group("foreground")
@@ -22,7 +22,7 @@ func _on_money_drop_timer_timeout():
 	
 	pick_timer_value()
 
-
+# Randomizes money drop rate. TODO: If more types of fishies are implemented, rework this.
 func pick_timer_value():
 	var value = randi() % 3 # Pick a random integer between 0 and 2
 	match value:

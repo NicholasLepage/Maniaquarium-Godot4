@@ -1,14 +1,16 @@
 extends Control
 
-@onready var sprite_plus_2d: Sprite2D = %SpritePlus2D
-@onready var trophy_box_container: HBoxContainer = %TrophyBoxContainer
-
 @export var menu_trophy_2d: PackedScene
 @export var first_trophy_position: Vector2 = Vector2(40,54)
 
+@onready var sprite_plus_2d: Sprite2D = %SpritePlus2D
+@onready var trophy_box_container: HBoxContainer = %TrophyBoxContainer
+
 var last_trophy_position: Vector2
 
+
 func _ready():
+	# NG+ modifications to Main Menu
 	if Events.new_game_plus == true:
 		sprite_plus_2d.visible = true
 		
@@ -22,6 +24,7 @@ func _ready():
 			trophy_box_container.add_child(trophy_instance)
 			trophy_instance.position = last_trophy_position + Vector2(72,0)
 			last_trophy_position = trophy_instance.position
+
 
 func _on_play_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/main/main.tscn")
