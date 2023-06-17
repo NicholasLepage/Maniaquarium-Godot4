@@ -19,14 +19,14 @@ config/icon="res://assets/images/thumbs_up_fish-removebg-preview.png"
 
 [autoload]
 
-Events="*res://scripts/events.gd"
+Events="*res://scenes/scripts/events.gd"
 MusicPlayer="*res://scenes/autoload/music_player.tscn"
 
 [display]
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
-window/size/resizable=false
+window/stretch/mode="viewport"
 
 [editor_plugins]
 
